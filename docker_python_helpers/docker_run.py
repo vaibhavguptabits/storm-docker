@@ -97,7 +97,7 @@ def get_storm_config():
 
   Returns:
     Dict: the Dict defined by the `config/storm-setup.yaml` file."""
-  with open(os.path.join("../" + "config", "storm-setup.yaml")) as f:
+  with open(os.path.join("config", "storm-setup.yaml")) as f:
     return yaml.load(f.read())
 
 def ec2_get_ip(public=True):
