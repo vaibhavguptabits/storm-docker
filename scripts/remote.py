@@ -46,7 +46,7 @@ def _zk_and_nimbus_on_same_host(d):
   return servers[d["storm.yaml"]["nimbus.host"]] in zk_ip_addresses
 
 def _main():
-  yaml_file_path = os.path.join("config", "storm-setup.yaml")
+  yaml_file_path = os.path.join("../" + "config/", "storm-setup.yaml")
   if not os.path.exists(yaml_file_path):
     print("{} does not exist. Exiting.".format(yaml_file_path), file=sys.stderr)
     sys.exit(1)

@@ -3,9 +3,15 @@ MAINTAINER viki-data data@viki.com
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe" >> /etc/apt/sources.list
 RUN echo "deb http://mirrors.ccs.neu.edu/ubuntu precise universe" >> /etc/apt/sources.list
+RUN echo deb http://wzy-mirror.nm.flipkart.com/ftp.us.debian.org/debian/ wheezy main >> /etc/apt/sources.list
+RUN echo deb http://wzy-mirror.nm.flipkart.com/security.debian.org/debian-security wheezy/updates main >> /etc/apt/sources.list
+RUN echo deb http://wzy-build1.nm.flipkart.com/flipkart wheezy flipkart >> /etc/apt/sources.list
+RUN echo deb http://wzy-mirror.nm.flipkart.com/ftp.debian.org/debian wheezy-backports main >> /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install -y unzip openjdk-6-jdk wget supervisor python-dev python-pip
+RUN apt-get install -y unzip wget supervisor python-dev python-pip
 RUN pip install PyYAML==3.11
+RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+RUN apt-get update && apt-get install -y --force-yes --fix-missing oracle-j2sdk1.8
 
 RUN wget -q -N http://mirrors.gigenet.com/apache/storm/apache-storm-0.9.2-incubating/apache-storm-0.9.2-incubating.zip
 RUN unzip -o /apache-storm-0.9.2-incubating.zip -d /usr/share/
